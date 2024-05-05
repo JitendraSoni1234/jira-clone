@@ -1,7 +1,6 @@
 import Sidebar from '@/components/Sidebar';
-import React from 'react';
 
-function ProjectLayout({ children }) {
+function ProjectNamePageLayout({ children }) {
   return (
     <section className="flex h-full">
       <Sidebar />
@@ -10,4 +9,4 @@ function ProjectLayout({ children }) {
   );
 }
 
-export default ProjectLayout;
+export default ProjectNamePageLayout;
