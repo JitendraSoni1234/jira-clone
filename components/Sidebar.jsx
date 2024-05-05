@@ -138,7 +138,7 @@ function Sidebar() {
   ];
 
   return (
-    <div className="flex h-full w-72 flex-col gap-y-5 bg-gray-50 p-3 shadow-inner">
+    <div className="flex h-[calc(100dvh-60px)] w-72 flex-col gap-y-5 bg-gray-50 p-3 shadow-inner">
       <div className="my-5 flex items-center gap-x-2 px-3">
         <div className="mt-1 flex items-center justify-center rounded-sm bg-[#FF5630] p-1 text-xs font-bold text-white">
           <FaChessPawn className="aspect-square text-2xl" />
