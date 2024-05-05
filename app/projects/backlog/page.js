@@ -22,23 +22,23 @@ function Backlo() {
   ];
 
   const memberData = [
-    { id: 1, short: 'JS' },
-    { id: 2, short: 'AG' },
-    { id: 3, short: 'AK' },
-    { id: 4, short: 'AA' },
-    { id: 4, short: 'AA' },
-    { id: 5, short: 'JS' },
-    { id: 6, short: 'AG' },
-    { id: 7, short: 'AK' },
-    { id: 8, short: 'AA' },
-    { id: 9, short: 'AA' },
+    { id: 1, short: 'JS', name: 'Jitendra soni' },
+    { id: 2, short: 'AG', name: 'Jitendra soni' },
+    { id: 3, short: 'AK', name: 'Jitendra soni' },
+    { id: 4, short: 'AA', name: 'Jitendra soni' },
+    { id: 11, short: 'AA', name: 'Jitendra soni' },
+    { id: 5, short: 'JS', name: 'Jitendra soni' },
+    { id: 6, short: 'AG', name: 'Jitendra soni' },
+    { id: 7, short: 'AK', name: 'Jitendra soni' },
+    { id: 8, short: 'AA', name: 'Jitendra soni' },
+    { id: 9, short: 'AA', name: 'Jitendra soni' },
   ];
   return (
     <div className="p-5 mt-5">
       <BreadCumbs items={backlogBreadcumbs} />
       <div className="font-medium text-2xl mt-1">Backlog</div>
       <div>
-        <Members members={memberData} />
+        <Members maxItems={6} members={memberData} />
       </div>
     </div>
   );

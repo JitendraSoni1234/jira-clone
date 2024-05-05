@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { MdOutlineLock, MdOutlineViewTimeline } from 'react-icons/md';
 import { SiBookstack } from 'react-icons/si';
 import { FaChessPawn, FaChevronRight, FaCode, FaInbox, FaSlack } from 'react-icons/fa';
@@ -8,7 +8,7 @@ import { CiBoxList, CiCalendar } from 'react-icons/ci';
 import { IoDiscOutline, IoCloudUploadOutline } from 'react-icons/io5';
 import { BsGraphUpArrow } from 'react-icons/bs';
 import { TbShip } from 'react-icons/tb';
-import { IoIosSettings } from 'react-icons/io';
+import { IoIosArrowBack, IoIosSettings } from 'react-icons/io';
 import { AiFillThunderbolt, AiOutlineIssuesClose } from 'react-icons/ai';
 import { RiPagesLine, RiStickyNoteAddLine } from 'react-icons/ri';
 import { NavigationMenu, NavigationMenuLink, NavigationMenuList } from './ui/navigation-menu';
@@ -16,7 +16,30 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Separator } from './ui/separator';
 
+const [minWidth, maxWidth, defaultWidth] = [20, window.innerWidth / 2, 288];
+
 function Sidebar() {
+  const [width, setWidth] = useState(defaultWidth);
+  const handleMouseDown = (e) => {
+    const startX = e.clientX;
+    const startWidth = width;
+  
+    const onMouseMove = (moveEvent) => {
+      const movementX = moveEvent.clientX - startX;
+      const newWidth = Math.max(minWidth, Math.min(maxWidth, startWidth + movementX));
+      setWidth(newWidth);
+    };
+  
+    const onMouseUp = () => {
+      document.removeEventListener('mousemove', onMouseMove);
+      document.removeEventListener('mouseup', onMouseUp);
+    };
+  
+    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseup', onMouseUp);
+  };
+  
+
   const planningItems = [
     {
       id: 'timeline',
@@ -137,32 +160,53 @@ function Sidebar() {
     },
   ];
 
+  const toggleResize = () => {
+    if (width < defaultWidth) {
+      setWidth(defaultWidth);
+    } else {
+      setWidth(minWidth);
+    }
+  };
+
   return (
-    <div className="flex h-[calc(100dvh-60px)] w-72 flex-col gap-y-5 bg-gray-50 p-3 shadow-inner">
-      <div className="my-5 flex items-center gap-x-2 px-3">
-        <div className="mt-1 flex items-center justify-center rounded-sm bg-[#FF5630] p-1 text-xs font-bold text-white">
-          <FaChessPawn className="aspect-square text-2xl" />
+    <>
+      <div
+        className="flex h-[calc(100dvh-60px)] flex-col gap-y-5 bg-gray-50 p-3 *:select-none shadow-inner overflow-hidden [&[data-min=true]_*]:hidden transition-all delay-150 w-auto"
+        data-min={width === minWidth}
+        style={{ width }}>
+        <div className="my-5 flex items-center gap-x-2 px-3">
+          <div className="mt-1 flex items-center justify-center rounded-sm bg-[#FF5630] p-1 text-xs font-bold text-white">
+            <FaChessPawn className="aspect-square text-2xl" />
+          </div>
+          <div>
+            <h2 className="-mb-[0.5px] text-sm font-semibold text-gray-600">Project Name</h2>
+            <p className="text-xs text-gray-500">Software Project</p>
+          </div>
         </div>
-        <div>
-          <h2 className="-mb-[0.5px] text-sm font-semibold text-gray-600">Project Name</h2>
-          <p className="text-xs text-gray-500">Software Project</p>
+        <div className="flex-1 flex flex-col gap-6 overflow-y-auto overflow-x-hidden">
+          <NavList label={'PLANNING'} items={planningItems} />
+          <NavList label={'DEVELOPMENT'} items={developmentItems} />
+          <NavList label={'OPERATIONS'} items={operationsItems} />
+          <Separator />
+          <NavList label={'OTHERS'} items={otherItems} />
+        </div>
+        <div className="text-xs text-center">
+          You are in a company-managed project
+          <br />
+          <Link href="about" className="underline">
+            Learn more
+          </Link>
         </div>
       </div>
-      <div className="flex-1 flex flex-col gap-6 overflow-y-auto overflow-x-hidden">
-        <NavList label={'PLANNING'} items={planningItems} />
-        <NavList label={'DEVELOPMENT'} items={developmentItems} />
-        <NavList label={'OPERATIONS'} items={operationsItems} />
-        <Separator />
-        <NavList label={'OTHERS'} items={otherItems} />
+      <div className="w-2 cursor-col-resize border-2 border-transparent hover:border-l-blue-500 relative group" onMouseDown={handleMouseDown}>
+        <div
+          onClick={() => toggleResize()}
+          className="top-10 absolute hidden rounded-full p-1 translate-x-[-50%] bg-white border-2 border-blue-500 border-solid cursor-pointer group-hover:flex hover:bg-blue-500 text-blue-500 hover:text-white [&[data-min=true]_svg]:rotate-180"
+          data-min={width < defaultWidth}>
+          <IoIosArrowBack />
+        </div>
       </div>
-      <div className="text-xs text-center">
-        You are in a company-managed project
-        <br />
-        <Link href="about" className="underline">
-          Learn more
-        </Link>
-      </div>
-    </div>
+    </>
   );
 }
 
