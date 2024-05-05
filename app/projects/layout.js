@@ -3,10 +3,10 @@ import React from 'react';
 
 function ProjectLayout({ children }) {
   return (
-    <div className="flex h-full">
+    <section className="flex h-full">
       <Sidebar />
       {children}
-    </div>
+    </section>
   );
 }
 
