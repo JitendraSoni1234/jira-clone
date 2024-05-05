@@ -22,55 +22,55 @@ function Sidebar() {
       id: 'timeline',
       label: 'Timeline',
       icon: MdOutlineViewTimeline,
-      href: `/project/timeline`,
+      href: `/projects/timeline`,
     },
     {
       id: 'backlog',
       label: 'Backlog',
       icon: SiBookstack,
-      href: `/project/timeline`,
+      href: `/projects/backlog`,
     },
     {
       id: 'active-sprint',
       label: 'Active sprint',
       icon: HiOutlineViewBoards,
-      href: `/project/active-sprint`,
+      href: `/projects/active-sprint`,
     },
     {
       id: 'calendar',
       label: 'Calendar',
       icon: CiCalendar,
-      href: `/project/calendar`,
+      href: `/projects/calendar`,
     },
     {
       id: 'reports',
       label: 'Reports',
       icon: BsGraphUpArrow,
-      href: `/project/reports`,
+      href: `/projects/reports`,
     },
     {
       id: 'list',
       label: 'List',
       icon: CiBoxList,
-      href: `/project/list`,
+      href: `/projects/list`,
     },
     {
       id: 'goals',
       label: 'Goals',
       icon: IoDiscOutline,
-      href: `/project/goals`,
+      href: `/projects/goals`,
     },
     {
       id: 'issues',
       label: 'Issues',
       icon: AiOutlineIssuesClose,
-      href: `/project/issues`,
+      href: `/projects/issues`,
     },
     {
       id: 'components',
       label: 'Components',
       icon: FaInbox,
-      href: `/project/components`,
+      href: `/projects/components`,
     },
   ];
 
@@ -79,19 +79,19 @@ function Sidebar() {
       id: 'code',
       label: 'Code',
       icon: FaCode,
-      href: `/project/code`,
+      href: `/projects/code`,
     },
     {
       id: 'security',
       label: 'Security',
       icon: MdOutlineLock,
-      href: `/project/security`,
+      href: `/projects/security`,
     },
     {
       id: 'releases',
       label: 'Releases',
       icon: TbShip,
-      href: `/project/releases`,
+      href: `/projects/releases`,
     },
   ];
 
@@ -100,7 +100,7 @@ function Sidebar() {
       id: 'deployments',
       label: 'Deployments',
       icon: IoCloudUploadOutline,
-      href: `/project/deployments`,
+      href: `/projects/deployments`,
     },
   ];
 
@@ -109,31 +109,31 @@ function Sidebar() {
       id: 'project-pages',
       label: 'Project pages',
       icon: RiPagesLine,
-      href: `/project/project-pages`,
+      href: `/projects/projects-pages`,
     },
     {
       id: 'slak-integration',
       label: 'Slak integration',
       icon: FaSlack,
-      href: `/project/slak-integration`,
+      href: `/projects/slak-integration`,
     },
     {
       id: 'testing-board',
       label: 'Testing board',
       icon: AiFillThunderbolt,
-      href: `/project/testing-board`,
+      href: `/projects/testing-board`,
     },
     {
       id: 'add-shortcut',
       label: 'Add shortcut',
       icon: RiStickyNoteAddLine,
-      href: `/project/add-shortcut`,
+      href: `/projects/add-shortcut`,
     },
     {
       id: 'project-settings',
       label: 'Project settings',
       icon: IoIosSettings,
-      href: `/project/project-settings`,
+      href: `/projects/projects-settings`,
     },
   ];
 
